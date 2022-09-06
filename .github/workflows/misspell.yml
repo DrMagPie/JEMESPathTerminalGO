@@ -2,8 +2,6 @@ name: Misspells
 on:
   pull_request:
     branches: [main]
-  push:
-    branches: [main]
 jobs:
   misspell:
     runs-on: ubuntu-latest
