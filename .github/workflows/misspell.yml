@@ -1,0 +1,18 @@
+name: Misspells
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+jobs:
+  misspell:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Spell check
+        uses: reviewdog/action-misspell@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          locale: "GB"
+          level: error

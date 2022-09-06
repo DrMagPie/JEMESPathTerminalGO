@@ -1,0 +1,26 @@
+version: "3.7"
+
+services:
+  vscode:
+    build: .
+    volumes:
+      - ../:/workspace
+      - ~/.docker:/root/.docker:z
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.ssh:/root/.ssh:z
+      # For Windows without WSL, a copy will be made
+      # from /tmp/.ssh to ~/.ssh to fix permissions
+      # - ~/.ssh:/tmp/.ssh:ro
+      - ./shell/.p10k.zsh:/root/.p10k.zsh:z
+      - ~/.zsh_history:/root/.zsh_history:z
+      - ~/.gitconfig:/root/.gitconfig:z
+      - ~/.kube:/root/.kube:z
+    environment:
+      - TZ=
+    cap_add:
+      # For debugging with dlv
+      - SYS_PTRACE
+    security_opt:
+      # For debugging with dlv
+      - seccomp:unconfined
+    entrypoint: [ "zsh", "-c", "while sleep 1000; do :; done" ]
