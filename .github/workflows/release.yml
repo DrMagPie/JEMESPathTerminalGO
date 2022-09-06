@@ -3,6 +3,13 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - .devcontainer/**
+      - .github/**
+      - .vscode/**
+      - .gitignore
+      - LICENSE
+      - README.md
 jobs:
   release:
     name: Create a release
