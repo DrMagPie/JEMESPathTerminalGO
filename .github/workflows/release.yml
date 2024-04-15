@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: wangyoucao577/go-release-action@v1.49
+      - uses: wangyoucao577/go-release-action@v1.50
         with:
           release_tag: ${{ needs.release.outputs.tag }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
